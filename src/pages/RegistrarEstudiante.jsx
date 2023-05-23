@@ -1,48 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import AlertaError from "../components/AlertaError";
+import AlertaExitoso from "../components/AlertaExitoso";
+import conexionAxios from "../axios/Axios";
 
 const RegistrarEstudiante = () => {
+  const [code, setCode] = useState("");
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alertaError, setAlertaError] = useState({ error: false, message: "" });
+  const [alertaExitoso, setAlertaExitoso] = useState({
+    error: false,
+    message: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (email.trim() === "" || password.trim() === "") {
+      setAlertaError({
+        error: true,
+        message: "Todos los campos son obligatorios",
+      });
+      setTimeout(() => setAlertaError({ error: false, message: "" }), 5000); // limpiar la alerta después de 5 segundos
+    }
+
+    // Verificar que la contraseña tenga al menos 8 caracteres
+    else if (password.length < 8) {
+      setAlertaError({
+        error: true,
+        message: "La contraseña debe tener al menos 8 caracteres",
+      });
+      setTimeout(() => setAlertaError({ error: false, message: "" }), 5000); // limpiar la alerta después de 5 segundos
+    }
+
+    try {
+      const res = await conexionAxios.post("/user/registerStudent", {
+        code,
+        name,
+        lastname,
+        email,
+        password,
+      });
+
+      if (res.status === 201) {
+        setAlertaExitoso({ error: true, message: res.data.message });
+        setTimeout(
+          () => setAlertaExitoso({ error: false, message: "" }),
+          10000
+        );
+        // Reiniciar los valores de los campos
+        setCode("");
+        setName("");
+        setLastname("");
+        setEmail("");
+        setPassword("");
+      }
+    } catch (error) {
+      // Manejar el error de la solicitud
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setAlertaError({ error: true, message: error.response.data.message });
+      } 
+      setTimeout(() => setAlertaError({ error: false, message: "" }), 10000);
+    }
+  };
   return (
     <>
       <div className=" xl:mx-96 lg:mx-60 md:mx-40 sm:mx-20 my-10 bg-white shadow rounded-lg p-10">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1 className=" font-bold text-2xl text-center text-gray-900 dark:text-red-500 ">
             REGISTRAR ESTUDIANTE
           </h1>
 
-          <div className="my-5">
-            <label
-              className="uppercase text-gray-600 block  font-bold"
-              htmlFor="nombre"
-              name="nombre"
-              type="text"
-            >
-              Nombres
-            </label>
-
-            <input
-              id="nombre"
-              type="text"
-              placeholder="nombres"
-              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            />
-          </div>
-          <div className="my-5">
-            <label
-              className="uppercase text-gray-600 block  font-bold"
-              htmlFor="apellido"
-              name="apellido"
-              type="text"
-            >
-              Apellidos
-            </label>
-            <input
-              id="apellido"
-              type="text"
-              placeholder="apellidos"
-              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            />
-          </div>
+          {alertaError.error && !alertaExitoso.error && (
+            <AlertaError message={alertaError.message} />
+          )}
+          {alertaExitoso.error && (
+            <AlertaExitoso message={alertaExitoso.message} />
+          )}
 
           <div className="my-5">
             <label
@@ -59,6 +100,45 @@ const RegistrarEstudiante = () => {
               type="number"
               placeholder="codigo"
               className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+          </div>
+          <div className="my-5">
+            <label
+              className="uppercase text-gray-600 block  font-bold"
+              htmlFor="nombre"
+              name="nombre"
+              type="text"
+            >
+              Nombres
+            </label>
+
+            <input
+              id="nombre"
+              type="text"
+              placeholder="nombres"
+              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="my-5">
+            <label
+              className="uppercase text-gray-600 block  font-bold"
+              htmlFor="apellido"
+              name="apellido"
+              type="text"
+            >
+              Apellidos
+            </label>
+            <input
+              id="apellido"
+              type="text"
+              placeholder="apellidos"
+              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
             />
           </div>
 
@@ -77,6 +157,8 @@ const RegistrarEstudiante = () => {
               type="email"
               placeholder="Email"
               className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -95,24 +177,8 @@ const RegistrarEstudiante = () => {
               type="password"
               placeholder="Password "
               className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            />
-          </div>
-
-          <div className="my-5">
-            <label
-              className="uppercase text-gray-600 block  font-bold"
-              htmlFor="password"
-              name="password"
-              type="password"
-            >
-              Repetir contraseña
-            </label>
-
-            <input
-              id="Repetirpassword"
-              type="Repetirpassword"
-              placeholder="Repetir password "
-              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
