@@ -60,10 +60,7 @@ const RegistrarEstudiante = () => {
       }
     } catch (error) {
       // Manejar el error de la solicitud
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
+      if (error.response && error.response.data && error.response.data.message
       ) {
         setAlertaError({ error: true, message: error.response.data.message });
       } 

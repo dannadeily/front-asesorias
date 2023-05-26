@@ -31,14 +31,23 @@ import EditarSolicitud from "./pages/docente/EditarSolicitud";
 import HistorialAsesoria from "./pages/docente/HistorialAsesoria";
 import HorarioAsesoria from "./pages/docente/HorarioAsesoria";
 import EditarHorarioAsesoria from "./pages/administrador/EditarHorarioAsesoria";
+import RutaPrivadaAdmin from "./layuot/RutaPrivadaAdmin";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = (token) => {
+    setIsAuthenticated(true);
+    localStorage.setItem("token", token);
+  };
+
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}>
-            <Route index element={<IniciarSesion />} />
+            <Route index element={<IniciarSesion handleLogin={handleLogin} />} />
             <Route
               path="RegistrarEstudiante"
               element={<RegistrarEstudiante />}
@@ -46,7 +55,10 @@ function App() {
             <Route path="RecuperarPassword" element={<RecuperarPassword />} />
           </Route>
 
-          <Route path="/administrador" element={<HeaderAdministrador />}>
+          <Route
+            path="/administrador"
+            element={<RutaPrivadaAdmin isAuthenticated={isAuthenticated} />}
+          >
             <Route index element={<HorarioAtencion />} />
             <Route path="registrardocente" element={<RegistrarDocente />} />
             <Route path="listadocentes" element={<ListaDocentes />} />
@@ -66,7 +78,7 @@ function App() {
             <Route path="AgendarAsesoria" element={<AgendarAsesoria />} />
             <Route path="CancelarAsesoria" element={<CancelarAsesoria />} />
             <Route path="CalificarAsesoria" element={<CalificarAsesoria />} />
-            <Route path="cambiarpassword" element={<CambiarPassword/>} />
+            <Route path="cambiarpassword" element={<CambiarPassword />} />
           </Route>
 
           <Route path="/docente" element={<HeaderDocente />}>
@@ -82,7 +94,7 @@ function App() {
             <Route path="solicitudasesoria" element={<SolicitudAsesoria />} />
             <Route path="editarsolicitud" element={<EditarSolicitud />} />
             <Route path="historialasesoria" element={<HistorialAsesoria />} />
-            <Route path="cambiarpassword" element={<CambiarPassword/>} />
+            <Route path="cambiarpassword" element={<CambiarPassword />} />
           </Route>
         </Routes>
       </BrowserRouter>
