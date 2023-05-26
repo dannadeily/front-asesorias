@@ -39,7 +39,7 @@ const IniciarSesion = ({ handleLogin }) => {
       });
 
       if (res.status === 200) {
-        const token = res.data.message; // Obtener el token de la respuesta del servidor
+        const token = res.data.message.token; // Obtener el token de la respuesta del servidor
         localStorage.setItem("token", token); // Guardar el token en el almacenamiento local
         setAlertaExitoso({
           error: true,
@@ -47,7 +47,14 @@ const IniciarSesion = ({ handleLogin }) => {
         });
         setTimeout(() => setAlertaError({ error: false, message: "" }), 5000); // limpiar la alerta después de 5 segundos
         handleLogin();
-        navigate("/administrador");
+        if (res.data.message.role === 1) {
+          navigate("/administrador");
+        }else if(res.data.message.role === 2){
+          navigate("/estudiante");
+        } else if(res.data.message.role === 3){
+          navigate("/docente");
+        }
+
         setEmail("");
         setPassword("");
       }

@@ -32,6 +32,8 @@ import HistorialAsesoria from "./pages/docente/HistorialAsesoria";
 import HorarioAsesoria from "./pages/docente/HorarioAsesoria";
 import EditarHorarioAsesoria from "./pages/administrador/EditarHorarioAsesoria";
 import RutaPrivadaAdmin from "./layuot/RutaPrivadaAdmin";
+import RutaPrivadaEstudiante from "./layuot/RutaPrivadaEstudiante";
+import RutaPrivadaDocente from "./layuot/RutaPrivadaDocente";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,13 +43,15 @@ function App() {
     localStorage.setItem("token", token);
   };
 
-
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}>
-            <Route index element={<IniciarSesion handleLogin={handleLogin} />} />
+            <Route
+              index
+              element={<IniciarSesion handleLogin={handleLogin} />}
+            />
             <Route
               path="RegistrarEstudiante"
               element={<RegistrarEstudiante />}
@@ -69,7 +73,12 @@ function App() {
             <Route path="reportes" element={<Reportes />} />
           </Route>
 
-          <Route path="/Estudiante" element={<HeaderEstudiante />}>
+          <Route
+            path="/Estudiante"
+            element={
+              <RutaPrivadaEstudiante isAuthenticated={isAuthenticated} />
+            }
+          >
             <Route path="DatosEstudiante" element={<DatosEstudiante />} />
             <Route
               path="DatosEstudiante/EditarDatosEstudiante"
@@ -81,7 +90,10 @@ function App() {
             <Route path="cambiarpassword" element={<CambiarPassword />} />
           </Route>
 
-          <Route path="/docente" element={<HeaderDocente />}>
+          <Route
+            path="/docente"
+            element={<RutaPrivadaDocente isAuthenticated={isAuthenticated} />}
+          >
             <Route path="datosdocente" element={<DatosDocente />} />
             <Route
               path="datosdocente/editardatosdocente"
