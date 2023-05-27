@@ -18,29 +18,29 @@ const HorarioAtencion = () => {
         </h2>
       </div>
 
-      <table class="table-auto border border-black mx-auto">
+      <table className="table-auto border border-black mx-auto">
         <thead>
           <tr>
-            <th class="border border-black  px-4 py-2">Nombre del Docente</th>
-            <th class="border  border-black px-4 py-2">Horario</th>
-            <th class="border  border-black px-4 py-2">Lugar (Virtual)</th>
+            <th className="border border-black  px-4 py-2">Nombre del Docente</th>
+            <th className="border  border-black px-4 py-2">Horario</th>
+            <th className="border  border-black px-4 py-2">Lugar (Virtual)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="border border-black px-4 py-2">Juan Pérez</td>
-            <td class="border border-black px-4 py-2">Lunes a Viernes 9:00 a 11:00</td>
-            <td class="border  border-black px-4 py-2">Zoom</td>
+            <td className="border border-black px-4 py-2">Juan Pérez</td>
+            <td className="border border-black px-4 py-2">Lunes a Viernes 9:00 a 11:00</td>
+            <td className="border  border-black px-4 py-2">Zoom</td>
           </tr>
           <tr>
-            <td class="border border-black px-4 py-2">María García</td>
-            <td class="border border-black px-4 py-2">Martes y Jueves 14:00 a 16:00</td>
-            <td class="border border-black px-4 py-2">Google Meet</td>
+            <td className="border border-black px-4 py-2">María García</td>
+            <td className="border border-black px-4 py-2">Martes y Jueves 14:00 a 16:00</td>
+            <td className="border border-black px-4 py-2">Google Meet</td>
           </tr>
           <tr>
-            <td class="border border-black  px-4 py-2">Pedro González</td>
-            <td class="border border-black px-4 py-2">Lunes y Miércoles 18:00 a 20:00</td>
-            <td class="border border-black px-4 py-2">Microsoft Teams</td>
+            <td className="border border-black  px-4 py-2">Pedro González</td>
+            <td className="border border-black px-4 py-2">Lunes y Miércoles 18:00 a 20:00</td>
+            <td className="border border-black px-4 py-2">Microsoft Teams</td>
           </tr>
         </tbody>
       </table>

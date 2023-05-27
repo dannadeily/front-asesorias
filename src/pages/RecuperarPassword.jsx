@@ -30,10 +30,7 @@ const RecuperarPassword = () => {
 
       if (res.status === 200) {
         setAlertaExitoso({ error: true, message: res.data.message });
-        // setTimeout(
-        //   () => setAlertaExitoso({ error: false, message: "" }),
-        //   10000
-        // );
+      
         // Reiniciar los valores de los campos
         setEmail("");
       }

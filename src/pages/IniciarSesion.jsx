@@ -39,24 +39,18 @@ const IniciarSesion = ({ handleLogin }) => {
       });
 
       if (res.status === 200) {
-        const token = res.data.message.token; // Obtener el token de la respuesta del servidor
-        localStorage.setItem("token", token); // Guardar el token en el almacenamiento local
-        setAlertaExitoso({
-          error: true,
-          message: "exitoso",
-        });
-        setTimeout(() => setAlertaError({ error: false, message: "" }), 5000); // limpiar la alerta después de 5 segundos
-        handleLogin();
-        if (res.data.message.role === 1) {
+        const token = res.data.token; // Obtener el token de la respuesta del servidor
+        localStorage.setItem("token", res.data.token); // Guardar el token en el almacenamiento local
+        localStorage.setItem("userId", res.data.userId);
+
+        handleLogin(token);
+        if (res.data.role === 1) {
           navigate("/administrador");
-        }else if(res.data.message.role === 2){
+        } else if (res.data.role === 2) {
           navigate("/estudiante");
-        } else if(res.data.message.role === 3){
+        } else if (res.data.role === 3) {
           navigate("/docente");
         }
-
-        setEmail("");
-        setPassword("");
       }
     } catch (error) {
       // Manejar el error de la solicitud

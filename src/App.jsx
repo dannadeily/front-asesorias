@@ -34,6 +34,7 @@ import EditarHorarioAsesoria from "./pages/administrador/EditarHorarioAsesoria";
 import RutaPrivadaAdmin from "./layuot/RutaPrivadaAdmin";
 import RutaPrivadaEstudiante from "./layuot/RutaPrivadaEstudiante";
 import RutaPrivadaDocente from "./layuot/RutaPrivadaDocente";
+import Materia from "./pages/docente/Materia";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -64,6 +65,8 @@ function App() {
             element={<RutaPrivadaAdmin isAuthenticated={isAuthenticated} />}
           >
             <Route index element={<HorarioAtencion />} />
+            <Route path="horarioasesoria" element={<HorarioAsesoria />}/>
+
             <Route path="registrardocente" element={<RegistrarDocente />} />
             <Route path="listadocentes" element={<ListaDocentes />} />
             <Route
@@ -79,6 +82,7 @@ function App() {
               <RutaPrivadaEstudiante isAuthenticated={isAuthenticated} />
             }
           >
+            <Route index element={<HorarioAtencion />} />
             <Route path="DatosEstudiante" element={<DatosEstudiante />} />
             <Route
               path="DatosEstudiante/EditarDatosEstudiante"
@@ -102,7 +106,7 @@ function App() {
             <Route path="horarioasesoria" element={<HorarioAsesoria />}>
               <Route index element={<AsesoriaRegistrada />} />
             </Route>
-
+            <Route path="materia" element={<Materia />} />
             <Route path="solicitudasesoria" element={<SolicitudAsesoria />} />
             <Route path="editarsolicitud" element={<EditarSolicitud />} />
             <Route path="historialasesoria" element={<HistorialAsesoria />} />

@@ -19,7 +19,7 @@ const RegistrarEstudiante = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (email.trim() === "" || password.trim() === "") {
+    if (code.trim() === "" || name.trim() === "" || lastname.trim() === "" ||  email.trim() === "" || password.trim() === "") {
       setAlertaError({
         error: true,
         message: "Todos los campos son obligatorios",
