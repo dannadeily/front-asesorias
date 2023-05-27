@@ -15,15 +15,15 @@ const ReportesPDF = ({ data }) => (
       <View>
         <Text>Reporte de Consultas</Text>
         <table className="min-w-full">
-          <thead>
+          <head>
             <tr>
-              <th className="border px-4 py-2">Docente</th>
+              <View className="border px-4 py-2">Docente</View>
               <th className="border px-4 py-2">Materia</th>
               <th className="border px-4 py-2">Asunto</th>
               <th className="border px-4 py-2">Estudiante</th>
               <th className="border px-4 py-2">Fecha y hora</th>
             </tr>
-          </thead>
+          </head>
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>

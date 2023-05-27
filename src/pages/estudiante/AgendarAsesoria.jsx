@@ -21,7 +21,7 @@ const AgendarAsesoria = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ( description.trim() === "") {
+    if (description.trim() === "") {
       setAlertaError({
         error: true,
         message: "Todos los campos son obligatorios",
@@ -32,6 +32,7 @@ const AgendarAsesoria = () => {
     try {
       const res = await conexionAxios.post("/consultation/save", {
         userId: localStorage.getItem("userId"),
+        courseId,
         teacherId,
         horarioId,
         description,
@@ -87,7 +88,9 @@ const AgendarAsesoria = () => {
         "/horario/user/" + teacherId
       );
       setMaterias(response.data);
+      setCourseId(response.data[0].id);
       setHorarios(responseHorario.data);
+      setHorarioId(responseHorario.data[0].id);
     } catch (error) {
       console.log(error);
     }
@@ -124,6 +127,7 @@ const AgendarAsesoria = () => {
               <select
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={(e) => handleChange(e.target.value)}
+                value={teacherId}
                 name="docente"
                 label="docente"
               >
