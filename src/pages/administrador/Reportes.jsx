@@ -34,8 +34,8 @@ const Reportes = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    fetchData(teacherId);
+  }, [teacherId]);
 
   const handleChange = async (teacherId) => {
     setTeacherId(teacherId);
@@ -54,7 +54,7 @@ const Reportes = () => {
 
   return (
     <div>
-      <div className=" px-10  ">
+      <div className="px-10">
         <div className="mb-4">
           <h1 className="text-3xl font-bold border-b-4 border-red-500">
             Reportes
@@ -82,10 +82,10 @@ const Reportes = () => {
         </div>
       </div>
 
-      <div className="md:w-1/2 lg:w-3/5  mx-auto my-5">
+      <div className="md:w-1/2 lg:w-3/5 mx-auto my-5">
         <div>
           <label
-            className="uppercase text-gray-600 block  font-bold"
+            className="uppercase text-gray-600 block font-bold"
             htmlFor="docente"
             name="docente"
             type="text"
@@ -111,65 +111,62 @@ const Reportes = () => {
       </div>
 
       {consultar && consultar.length ? (
-        <>
-          {consultar.map((consultarItem) => (
-            <div>
-              <div>
-                <div className="flex flex-col">
-                  <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                      <div className="overflow-hidden">
-                        <table className="min-w-full border text-center text-sm font-light dark:border-neutral-500">
-                          <thead className="border-b font-medium dark:border-neutral-500">
-                            <tr>
-                              <th
-                                scope="col"
-                                className="border-r px-6 py-4 dark:border-neutral-500"
-                              >
-                                Docente
-                              </th>
-                              <th
-                                scope="col"
-                                className="border-r px-6 py-4 dark:border-neutral-500"
-                              >
-                                tema
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr className="border-b dark:border-neutral-500">
-                              <td className="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
-                                Carlos ivan gomez
-                              </td>
-                              <td className="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
-                                carlosgomes@ufps.edu.co
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+        <div className="md:w-1/2 lg:w-3/5 md:h-screen mx-auto my-5">
+          <div className="flex flex-col">
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div className="overflow-hidden">
+                  <table className="min-w-full border text-center text-sm font-light dark:border-neutral-500">
+                    <thead className="border-b font-medium dark:border-neutral-500">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="border-r px-6 py-4 dark:border-neutral-500"
+                        >
+                          Docente
+                        </th>
+                        <th
+                          scope="col"
+                          className="border-r px-6 py-4 dark:border-neutral-500"
+                        >
+                          Tema
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {consultar.map((consultarItem) => (
+                        <tr
+                          key={consultarItem.id}
+                          className="border-b dark:border-neutral-500"
+                        >
+                          <td className="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
+                            {/* {consultarItem.teacher.name} {consultarItem.teacher.lastname} */}
+                          </td>
+                          <td className="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                            {consultarItem.description}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-          ))}
-        </>
-      ) : (
-        <>
-          <div className="mb-4">
-            <div className="px-10 py-5">
-              <div className="mb-4">
-                <h1 className="text-3xl font-bold border-b-4 border-red-500">
-                  No hay reportes de asesorias
-                </h1>
-              </div>
-            </div>
-            <p className="text-xl mt-5 mb-10 text-center">
-              Seleccione un docente para consultar las asesorias
-            </p>
           </div>
-        </>
+        </div>
+      ) : (
+        <div className="mb-4">
+          <div className="px-10 py-5">
+            <div className="mb-4">
+              <h1 className="text-3xl font-bold border-b-4 border-red-500">
+                No hay reportes de asesorías
+              </h1>
+            </div>
+          </div>
+          <p className="text-xl mt-5 mb-10 text-center">
+            Seleccione un docente para consultar las asesorías
+          </p>
+        </div>
       )}
     </div>
   );
