@@ -36,7 +36,7 @@ const HeaderDocente = () => {
 
   return (
     <>
-      <nav className="bg-gray-50 py-5 dark:bg-red-700 ">
+      <nav className="bg-gray-50  dark:bg-red-700 ">
         <div className="max-w-screen-xl px-4 py-3 md:px-6">
           <div className="flex items-center justify-between">
             <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">

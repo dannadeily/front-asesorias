@@ -21,7 +21,7 @@ const AgendarAsesoria = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (emails.trim() === "" || description.trim() === "") {
+    if ( description.trim() === "") {
       setAlertaError({
         error: true,
         message: "Todos los campos son obligatorios",
@@ -52,8 +52,12 @@ const AgendarAsesoria = () => {
         setEmails("");
       }
     } catch (error) {
-       // Manejar el error de la solicitud
-       if (error.response && error.response.data && error.response.data.message) {
+      // Manejar el error de la solicitud
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setAlertaError({ error: true, message: error.response.data.message });
       }
       setTimeout(() => setAlertaError({ error: false, message: "" }), 10000);
@@ -129,6 +133,15 @@ const AgendarAsesoria = () => {
                   </option>
                 ))}
               </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </div>
             </div>
           </div>
 
@@ -156,6 +169,15 @@ const AgendarAsesoria = () => {
                   </option>
                 ))}
               </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </div>
             </div>
           </div>
 
@@ -222,6 +244,15 @@ const AgendarAsesoria = () => {
                   </option>
                 ))}
               </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </div>
             </div>
           </div>
 

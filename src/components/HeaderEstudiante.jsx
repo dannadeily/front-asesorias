@@ -10,7 +10,7 @@ const HeaderEstudiante = () => {
   };
   return (
     <>
-      <nav className="bg-gray-50 py-5 dark:bg-red-700 ">
+      <nav className="bg-gray-50  dark:bg-red-700 ">
         <div className="max-w-screen-xl px-4 py-3 md:px-6">
           <div className="flex items-center justify-between">
             <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
@@ -68,6 +68,17 @@ const HeaderEstudiante = () => {
                     className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
                   >
                     Calificar asesoria
+                  </button>
+                </Link>
+              </li>
+              <li>
+                <Link to="reporteAsesoria">
+                  <button
+                    id="dropdownNavbarLink"
+                    data-dropdown-toggle="dropdownNavbar"
+                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                  >
+                    Reportes
                   </button>
                 </Link>
               </li>

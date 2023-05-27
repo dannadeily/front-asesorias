@@ -87,7 +87,7 @@ const RecuperarPassword = () => {
           />
         </form>
         <Link to="/">
-          <a>Volver a inicio</a>
+          Volver a inicio
         </Link>
       </div>
     </>
