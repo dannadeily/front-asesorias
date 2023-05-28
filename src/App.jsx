@@ -100,6 +100,7 @@ function App() {
             path="/docente"
             element={<RutaPrivadaDocente isAuthenticated={isAuthenticated} />}
           >
+            <Route index element={<HistorialAsesoria />} />
             <Route path="datosdocente" element={<DatosDocente />} />
             <Route
               path="datosdocente/editardatosdocente"
@@ -111,7 +112,7 @@ function App() {
             <Route path="materia" element={<Materia />} />
             <Route path="solicitudasesoria" element={<SolicitudAsesoria />} />
             <Route path="editarsolicitud" element={<EditarSolicitud />} />
-            <Route path="historialasesoria" element={<HistorialAsesoria />} />
+            
             <Route path="cambiarpassword" element={<CambiarPassword />} />
           </Route>
         </Routes>

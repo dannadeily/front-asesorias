@@ -32,6 +32,7 @@ const AsesoriaRegistrada = () => {
   };
 
   return (
+    
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll mx-5">
       {asesoria && asesoria.length ? (
         <>
@@ -93,6 +94,7 @@ const AsesoriaRegistrada = () => {
         </>
       )}
     </div>
+    
   );
 };
 

@@ -63,7 +63,7 @@ const CalificarAsesoria = () => {
                 <p className="font-bold mb-3 text-gray-700 uppercase">
                   Docente:{" "}
                   <span className="font-normal normal-case">
-                    
+                    {calificarItem.docente}
                   </span>
                 </p>
 
@@ -76,14 +76,14 @@ const CalificarAsesoria = () => {
                 <p className="font-bold mb-3 text-gray-700 uppercase">
                   Materia:{" "}
                   <span className="font-normal normal-case">
-                    
+                    {calificarItem.materia}
                   </span>
                 </p>
 
                 <p className="font-bold mb-3 text-gray-700 uppercase">
                   Horario:{" "}
                   <span className="font-normal normal-case">
-                    
+                    {calificarItem.date}
                   </span>
                 </p>
                 <p className="font-normal normal-case py-1">
