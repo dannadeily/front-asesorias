@@ -58,6 +58,7 @@ function App() {
               path="RegistrarEstudiante"
               element={<RegistrarEstudiante />}
             />
+            <Route path="horarioasesoria" element={<HorarioAtencion />} />
             <Route path="RecuperarPassword" element={<RecuperarPassword />} />
           </Route>
 

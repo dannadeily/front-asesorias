@@ -150,15 +150,7 @@ const IniciarSesion = ({ handleLogin }) => {
           </Link>
         </nav>
 
-        <nav className="lg:flex lg:justify-between">
-          <span>¿No tiene cuenta? </span>
-          <Link
-            className=" text-black uppercase text-sm"
-            to="/RegistrarEstudiante"
-          >
-            Registrarse
-          </Link>
-        </nav>
+        
       </div>
     </>
   );
