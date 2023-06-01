@@ -91,7 +91,7 @@ const ReportesPDF = ({ data }) => {
   );
 };
 
-const Reportes = () => {
+const ReporteDocente = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [teacher, setTeacher] = useState([]);
@@ -316,4 +316,4 @@ const Reportes = () => {
   );
 };
 
-export default Reportes;
+export default ReporteDocente;

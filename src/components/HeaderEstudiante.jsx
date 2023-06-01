@@ -3,6 +3,25 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const HeaderEstudiante = () => {
   const navigate = useNavigate();
+  const [openMenu, setOpenMenu] = useState(false);
+  const handleClick = () => {
+    setOpenMenu(!openMenu);
+  };
+
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (openMenu && !event.target.closest("#dropdownNavbar")) {
+        setOpenMenu(true);
+      }
+    },
+    [openMenu]
+  );
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [handleClickOutside]);
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Eliminar el token del almacenamiento local
@@ -12,9 +31,55 @@ const HeaderEstudiante = () => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
         <nav className="bg-gray-50  dark:bg-red-700 ">
+          <div className="flex items-center justify-between">
+            <h1 className="px-2 text-white font-bold text-1xl">ESTUDIANTE</h1>
+            <button
+              className="flex items-center px-4 py-2 rounded ml-auto"
+              onClick={handleLogout}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-white mr-2 flex-shrink-0"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                />
+              </svg>
+              <span className="text-white">Salir</span>
+            </button>
+          </div>
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
+            <button
+              className="text-gray-900 dark:text-white md:hidden"
+              onClick={handleClick}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
             <div className="flex items-center justify-between">
-              <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
+              <ul
+                className={`${
+                  openMenu ? "block" : "hidden"
+                }  md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
+              >
                 <li>
                   <Link to="/estudiante">
                     <button
@@ -84,32 +149,12 @@ const HeaderEstudiante = () => {
                   </Link>
                 </li>
               </ul>
-              <button
-                className="flex items-center px-4 py-2 rounded ml-auto"
-                onClick={handleLogout}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-white mr-2 flex-shrink-0"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                  />
-                </svg>
-                <span className="text-white">Salir</span>
-              </button>
             </div>
           </div>
         </nav>
       </header>
 
-      <main>
+      <main className="z-40 mt-20">
         <Outlet />
       </main>
     </>

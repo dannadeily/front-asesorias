@@ -20,6 +20,12 @@ const HeaderDocente = () => {
     },
     [openMenu2, setOpenMenu2]
   );
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside2);
+    return () => {
+      document.removeEventListener("click", handleClickOutside2);
+    };
+  }, [handleClickOutside2]);
 
   const [openMenu, setOpenMenu] = useState(false);
   const handleClick = () => {
@@ -50,121 +56,10 @@ const HeaderDocente = () => {
 
   return (
     <>
-      <nav className="bg-gray-50  dark:bg-red-700 ">
-        <div className="max-w-screen-xl px-4 py-3 md:px-6">
-          <button
-            className="text-gray-900 dark:text-white md:hidden"
-            onClick={handleClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <nav className="bg-gray-50  dark:bg-red-700 ">
           <div className="flex items-center justify-between">
-            <ul
-              className={`${
-                openMenu ? "block" : "hidden"
-              } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
-            >
-              <li>
-                <Link to="datosdocente">
-                  <button
-                    type="button"
-                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
-                  >
-                    Datos personales
-                  </button>
-                </Link>
-              </li>
-              <li>
-                <Link to="horarioasesoria">
-                  <button
-                    id="dropdownNavbarLink"
-                    data-dropdown-toggle="dropdownNavbar"
-                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
-                  >
-                    Horario asesoria
-                  </button>
-                </Link>
-              </li>
-              <li>
-                <Link to="materia">
-                  <button
-                    id="dropdownNavbarLink"
-                    data-dropdown-toggle="dropdownNavbar"
-                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
-                  >
-                    Materia
-                  </button>
-                </Link>
-              </li>
-
-              <li>
-                <button
-                  onClick={() => handleClick2("menu2")}
-                  id="dropdownNavbarLink"
-                  data-dropdown-toggle="dropdownNavbar"
-                  className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
-                >
-                  Solicitud de asesorias
-                  <svg
-                    className="w-5 h-5 ml-1"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-                  </svg>
-                </button>
-
-                {openMenu2 === "menu2" && (
-                  <div className="absolute z-10 block font-normal bg-white divide-y divide-gray-100 rounded shadow  dark:divide-gray-600">
-                    <ul
-                      id="dropdownNavbar"
-                      className="py-1 text-sm dark:text-gray-400"
-                      aria-labelledby="dropdownLargeButton"
-                    >
-                      <Link to="solicitudasesoria">
-                        <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
-                          <button type="button">
-                            solicitudes para aprobar
-                          </button>
-                        </li>
-                      </Link>
-                      <Link to="editarsolicitud">
-                        <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
-                          <button type="button">
-                            cancelar solicitudes aprobadas
-                          </button>
-                        </li>
-                      </Link>
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <li>
-                <Link to="/docente">
-                  <button
-                    data-dropdown-toggle="dropdownNavbar"
-                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
-                  >
-                    Historial de asesorias
-                  </button>
-                </Link>
-              </li>
-            </ul>
+            <h1 className="px-2 text-white font-bold text-1xl">DOCENTE</h1>
             <button
               className="flex items-center px-4 py-2 rounded ml-auto"
               onClick={handleLogout}
@@ -186,10 +81,126 @@ const HeaderDocente = () => {
               <span className="text-white">Salir</span>
             </button>
           </div>
-        </div>
-      </nav>
+          <div className="max-w-screen-xl px-4 py-3 md:px-6">
+            <button
+              className="text-gray-900 dark:text-white md:hidden"
+              onClick={handleClick}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+            <div className="flex items-center justify-between">
+              <ul
+                className={`${
+                  openMenu ? "block" : "hidden"
+                } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
+              >
+                <li>
+                  <Link to="datosdocente">
+                    <button
+                      type="button"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                    >
+                      Datos personales
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="horarioasesoria">
+                    <button
+                      id="dropdownNavbarLink"
+                      data-dropdown-toggle="dropdownNavbar"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                    >
+                      Horario asesoria
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="materia">
+                    <button
+                      id="dropdownNavbarLink"
+                      data-dropdown-toggle="dropdownNavbar"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                    >
+                      Materia
+                    </button>
+                  </Link>
+                </li>
 
-      <main>
+                <li>
+                  <button
+                    onClick={() => handleClick2("menu2")}
+                    id="dropdownNavbarLink"
+                    data-dropdown-toggle="dropdownNavbar"
+                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                  >
+                    Solicitud de asesorias
+                    <svg
+                      className="w-5 h-5 ml-1"
+                      aria-hidden="true"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+                    </svg>
+                  </button>
+
+                  {openMenu2 === "menu2" && (
+                    <div className="absolute z-10 block font-normal bg-white divide-y divide-gray-100 rounded shadow  dark:divide-gray-600">
+                      <ul
+                        id="dropdownNavbar"
+                        className="py-1 text-sm dark:text-gray-400"
+                        aria-labelledby="dropdownLargeButton"
+                      >
+                        <Link to="solicitudasesoria">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                            <button type="button">
+                              solicitudes para aprobar
+                            </button>
+                          </li>
+                        </Link>
+                        <Link to="editarsolicitud">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                            <button type="button">
+                              cancelar solicitudes aprobadas
+                            </button>
+                          </li>
+                        </Link>
+                      </ul>
+                    </div>
+                  )}
+                </li>
+                <li>
+                  <Link to="/docente">
+                    <button
+                      data-dropdown-toggle="dropdownNavbar"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                    >
+                      Historial de asesorias
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main className="z-40 mt-20">
         <Outlet />
       </main>
     </>

@@ -11,38 +11,95 @@ const CancelarAsesoria = () => {
         </div>
       </div>
       <div className="md:w-1/2 lg:w-3/5 md:h-screen mx-auto my-5">
-       
-        <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl   ">
-          <p className="font-bold mb-3 text-gray-700 uppercase">
-            Docente:{" "}
-            <span className="font-normal normal-case">Carlos ivan Gomez</span>
-          </p>
 
-          <p className="font-bold mb-3 text-gray-700 uppercase">
-            Asunto: <span className="font-normal normal-case">semaforonos</span>
-          </p>
-          <p className="font-bold mb-3 text-gray-700 uppercase">
-            Materia:{" "}
-            <span className="font-normal normal-case">sistemas operativos</span>
-          </p>
-          <p className="font-bold mb-3 text-gray-700 uppercase">
-            Modalidad: <span className="font-normal normal-case">virtual</span>
-          </p>
-          <p className="font-bold mb-3 text-gray-700 uppercase">
-            Horario:{" "}
-            <span className="font-normal normal-case">
-              lunes 12 de abril a las 4:30 P.M
-            </span>
-          </p>
-
-          <div className="flex justify-between mt-10">
-            <button
-              type="button"
-              className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg "
-            >
-              Cancelar
-            </button>
-          </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full text-sm text-left  border ">
+            <thead class="text-xs  uppercase border  bg-blue-300 ">
+              <tr className="border-b border-gray-400">
+                <th scope="col" class="px-6 py-3">
+                  Docente
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Asunto
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Materia
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Horario
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Opciones
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class=" border-b border-gray-400 bg-white ">
+                <td scope="row" class="px-6 py-4 ">
+                  Apple MacBook Pro 17"
+                </td>
+                <td class="px-6 py-4">Silver</td>
+                <td class="px-6 py-4">Laptop</td>
+                <td class="px-6 py-4">$2999</td>
+                <td class="px-6 py-4">
+                  <button
+                    type="button"
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg "
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+              <tr class=" border-b border-gray-400 bg-white ">
+                <td scope="row" class="px-6 py-4 ">
+                  Apple MacBook Pro 17"
+                </td>
+                <td class="px-6 py-4">Silver</td>
+                <td class="px-6 py-4">Laptop</td>
+                <td class="px-6 py-4">$2999</td>
+                <td class="px-6 py-4">
+                  <button
+                    type="button"
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg "
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+              <tr class=" border-b border-gray-400 bg-white ">
+                <td scope="row" class="px-6 py-4 ">
+                  Apple MacBook Pro 17"
+                </td>
+                <td class="px-6 py-4">Silver</td>
+                <td class="px-6 py-4">Laptop</td>
+                <td class="px-6 py-4">$2999</td>
+                <td class="px-6 py-4">
+                  <button
+                    type="button"
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg "
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+              <tr class=" border-b border-gray-400  bg-white">
+                <td scope="row" class="px-6 py-4 ">
+                  Apple MacBook Pro 17"
+                </td>
+                <td class="px-6 py-4">Silver</td>
+                <td class="px-6 py-4">Laptop</td>
+                <td class="px-6 py-4">$2999</td>
+                <td class="px-6 py-4">
+                  <button
+                    type="button"
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg "
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

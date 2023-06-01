@@ -2,6 +2,32 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const HeaderAdministrador = () => {
+  const [openMenu2, setOpenMenu2] = useState("");
+  const handleClick2 = (menuName) => {
+    if (openMenu2 === menuName) {
+      setOpenMenu2("");
+    } else {
+      setOpenMenu2(menuName);
+      setOpenMenu(false); // Agrega esta línea para cerrar el menú principal al abrir el submenú
+    }
+  };
+
+  const handleClickOutside2 = useCallback(
+    (event) => {
+      if (!openMenu2) return;
+      if (event.target.closest("#dropdownNavbar")) {
+        setOpenMenu2(false);
+      }
+    },
+    [openMenu2, setOpenMenu2]
+  );
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside2);
+    return () => {
+      document.removeEventListener("click", handleClickOutside2);
+    };
+  }, [handleClickOutside2]);
+
   const [openMenu, setOpenMenu] = useState(false);
   const handleClick = () => {
     setOpenMenu(!openMenu);
@@ -81,54 +107,77 @@ const HeaderAdministrador = () => {
               </svg>
             </button>
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <ul
-                  className={`${
-                    openMenu ? "block" : "hidden"
-                  } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
-                >
-                  <li>
-                    <Link
-                      to="/administrador/"
-                      className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+              <ul
+                className={`${
+                  openMenu ? "block" : "hidden"
+                } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
+              >
+                <li>
+                  <Link
+                    to="/administrador/"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                  >
+                    Horario de asesorias
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="registrardocente"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                  >
+                    Registrar docente
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="listadocentes"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                  >
+                    Listado de docentes
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleClick2("menu1")}
+                    id="dropdownNavbarLink"
+                    data-dropdown-toggle="dropdownNavbar"
+                    className="flex py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                  >
+                    Reportes
+                    <svg
+                      className="w-5 h-5 ml-1"
+                      aria-hidden="true"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      Horario de asesorias
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="registrardocente"
-                      className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
-                    >
-                      Registrar docente
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="horarioasesoria"
-                      className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
-                    >
-                      Horario asesoria
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="listadocentes"
-                      className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
-                    >
-                      Listado de docentes
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="reportes"
-                      className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
-                    >
-                      Reportes
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+                    </svg>
+                  </button>
+
+                  {openMenu2 === "menu1" && (
+                    <div className="absolute z-10 block font-normal bg-white divide-y divide-gray-100 rounded shadow  dark:divide-gray-600">
+                      <ul
+                        id="dropdownNavbar"
+                        className="py-1 text-sm dark:text-gray-400"
+                        aria-labelledby="dropdownLargeButton"
+                      >
+                        <Link to="reportedocente">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                            <button type="button">Reporte por docente</button>
+                          </li>
+                        </Link>
+                        <Link to="reportegeneral">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                            <button type="button">Reporte general</button>
+                          </li>
+                        </Link>
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              </ul>
             </div>
           </div>
         </nav>

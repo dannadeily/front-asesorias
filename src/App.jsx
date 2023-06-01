@@ -13,7 +13,7 @@ import CambiarPassword from "./pages/CambiarPassword";
 // Administrador
 import RegistrarDocente from "./pages/administrador/RegistrarDocente";
 import ListaDocentes from "./pages/administrador/ListaDocentes";
-import Reportes from "./pages/administrador/Reportes";
+import ReporteDocente from "./pages/administrador/ReporteDocente";
 import HorarioAtencion from "./pages/HorarioAtencion";
 //Estudiate
 import DatosEstudiante from "./pages/estudiante/DatosEstudiante";
@@ -36,6 +36,7 @@ import RutaPrivadaEstudiante from "./layuot/RutaPrivadaEstudiante";
 import RutaPrivadaDocente from "./layuot/RutaPrivadaDocente";
 import Materia from "./pages/docente/Materia";
 import ReporteAsesoria from "./pages/estudiante/ReporteAsesoria";
+import ReporteGeneral from "./pages/administrador/ReporteGeneral";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -75,7 +76,8 @@ function App() {
               path="listadocentes/editardatosasesoria"
               element={<EditarHorarioAsesoria />}
             />
-            <Route path="reportes" element={<Reportes />} />
+            <Route path="reportedocente" element={<ReporteDocente />} />
+            <Route path="reportegeneral" element={<ReporteGeneral />} />
           </Route>
 
           <Route
@@ -113,7 +115,7 @@ function App() {
             <Route path="materia" element={<Materia />} />
             <Route path="solicitudasesoria" element={<SolicitudAsesoria />} />
             <Route path="editarsolicitud" element={<EditarSolicitud />} />
-            
+
             <Route path="cambiarpassword" element={<CambiarPassword />} />
           </Route>
         </Routes>

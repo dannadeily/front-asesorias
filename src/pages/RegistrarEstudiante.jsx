@@ -19,7 +19,13 @@ const RegistrarEstudiante = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (code.trim() === "" || name.trim() === "" || lastname.trim() === "" ||  email.trim() === "" || password.trim() === "") {
+    if (
+      code.trim() === "" ||
+      name.trim() === "" ||
+      lastname.trim() === "" ||
+      email.trim() === "" ||
+      password.trim() === ""
+    ) {
       setAlertaError({
         error: true,
         message: "Todos los campos son obligatorios",
@@ -60,16 +66,21 @@ const RegistrarEstudiante = () => {
       }
     } catch (error) {
       // Manejar el error de la solicitud
-      if (error.response && error.response.data && error.response.data.message
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
       ) {
         setAlertaError({ error: true, message: error.response.data.message });
-      } 
+      }
       setTimeout(() => setAlertaError({ error: false, message: "" }), 10000);
     }
   };
   return (
-    <>
-      <div className=" xl:mx-96 lg:mx-60 md:mx-40 sm:mx-20 my-10 bg-white shadow rounded-lg p-10">
+    < >
+    <div className="py-5">
+   
+      <div className=" xl:mx-96 lg:mx-60 md:mx-40 sm:mx-20  bg-white shadow rounded-lg px-10 py-5 ">
         <form onSubmit={handleSubmit}>
           <h1 className=" font-bold text-2xl text-center text-gray-900 dark:text-red-500 ">
             REGISTRAR ESTUDIANTE
@@ -193,6 +204,7 @@ const RegistrarEstudiante = () => {
           </Link>
         </nav>
       </div>
+      </div>  
     </>
   );
 };
