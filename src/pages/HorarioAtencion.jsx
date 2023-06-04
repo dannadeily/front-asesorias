@@ -35,28 +35,55 @@ const HorarioAtencion = () => {
         </h2>
       </div>
 
-      <table className="table-auto border border-black mx-auto">
-        <thead>
-          <tr>
-            <th className="border border-black  px-4 py-2">
-              Nombre del Docente
-            </th>
-            <th className="border  border-black px-4 py-2">Horario</th>
-          </tr>
-        </thead>
-        <tbody>
-          {horario.map((horarioItem) => (
-            <tr>
-              <td className="border border-black px-4 py-2">
-                {horarioItem.docente}
-              </td>
-              <td className="border border-black px-4 py-2">
-                {/* {horarioItem.horario} */}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="md:w-1/2 lg:w-3/5 md:h-screen mx-auto my-5">
+        <div className="flex flex-col">
+          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-200 ">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-center text-xs font-medium  uppercase tracking-wider"
+                    >
+                      Nombre del Docente
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider"
+                    >
+                      Horario
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {horario.map((horarioItem) => (
+                    <tr key={horarioItem.name}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {horarioItem.name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {horarioItem.horarios.map((horarios) => (
+                          <div key={horarios.id}>
+                            <p className="text-sm text-gray-900">
+                              {" "}
+                              {horarios.day}
+                              {" de "}
+                              {horarios.startTime}
+                              {" a "}
+                              {horarios.endTime}{" "}
+                            </p>
+                          </div>
+                        ))}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

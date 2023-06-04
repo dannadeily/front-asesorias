@@ -30,7 +30,7 @@ const RecuperarPassword = () => {
 
       if (res.status === 200) {
         setAlertaExitoso({ error: true, message: res.data.message });
-      
+
         // Reiniciar los valores de los campos
         setEmail("");
       }
@@ -48,47 +48,47 @@ const RecuperarPassword = () => {
   };
   return (
     <>
-      <div className=" xl:mx-96 lg:mx-60 md:mx-40 sm:mx-20 my-10 bg-white shadow rounded-lg p-10">
-        <form onSubmit={handleSubmit}>
-          <h1 className=" font-bold text-2xl text-center text-gray-900 dark:text-red-500 ">
-            RECUPERAR CONTRASEÑA
-          </h1>
-          {alertaError.error && !alertaExitoso.error && (
-            <AlertaError message={alertaError.message} />
-          )}
-          {alertaExitoso.error && (
-            <AlertaExitoso message={alertaExitoso.message} />
-          )}
+      <div className="py-5">
+        <div className=" xl:mx-96 lg:mx-60 md:mx-40 sm:mx-20 my-10 bg-white shadow rounded-lg p-10 ">
+          <form onSubmit={handleSubmit}>
+            <h1 className=" font-bold text-2xl text-center text-gray-900 dark:text-red-500 ">
+              RECUPERAR CONTRASEÑA
+            </h1>
+            {alertaError.error && !alertaExitoso.error && (
+              <AlertaError message={alertaError.message} />
+            )}
+            {alertaExitoso.error && (
+              <AlertaExitoso message={alertaExitoso.message} />
+            )}
 
-          <div className="my-5">
-            <label
-              className="uppercase text-gray-600 block  font-bold"
-              htmlFor="email"
-              name="email"
-              type="email"
-            >
-              Email
-            </label>
+            <div className="my-5">
+              <label
+                className="uppercase text-gray-600 block  font-bold"
+                htmlFor="email"
+                name="email"
+                type="email"
+              >
+                Email
+              </label>
+
+              <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
             <input
-              id="email"
-              type="email"
-              placeholder="Email"
-              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="submit"
+              value="enviar"
+              className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
-          </div>
-
-          <input
-            type="submit"
-            value="enviar"
-            className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
-          />
-        </form>
-        <Link to="/">
-          Volver a inicio
-        </Link>
+          </form>
+          <Link to="/">Volver a inicio</Link>
+        </div>
       </div>
     </>
   );
