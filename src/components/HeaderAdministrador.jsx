@@ -8,7 +8,6 @@ const HeaderAdministrador = () => {
       setOpenMenu2("");
     } else {
       setOpenMenu2(menuName);
-      setOpenMenu(false); // Agrega esta línea para cerrar el menú principal al abrir el submenú
     }
   };
 
@@ -21,6 +20,7 @@ const HeaderAdministrador = () => {
     },
     [openMenu2, setOpenMenu2]
   );
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside2);
     return () => {
@@ -29,25 +29,23 @@ const HeaderAdministrador = () => {
   }, [handleClickOutside2]);
 
   const [openMenu, setOpenMenu] = useState(false);
+
   const handleClick = () => {
     setOpenMenu(!openMenu);
   };
 
-  const handleClickOutside = useCallback(
-    (event) => {
-      if (openMenu && !event.target.closest("#dropdownNavbar")) {
-        setOpenMenu(true);
-      }
-    },
-    [openMenu]
-  );
+  // Add mobile menu state
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [handleClickOutside]);
+  // Toggle mobile menu
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Close mobile menu when a navigation link is clicked
+  const handleMobileMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
 
   const navigate = useNavigate();
 
@@ -89,7 +87,7 @@ const HeaderAdministrador = () => {
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
             <button
               className="text-gray-900 dark:text-white md:hidden"
-              onClick={handleClick}
+              onClick={handleMobileMenuToggle}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,11 +107,12 @@ const HeaderAdministrador = () => {
             <div className="flex items-center justify-between">
               <ul
                 className={`${
-                  openMenu ? "block" : "hidden"
+                  openMenu || isMobileMenuOpen ? "block" : "hidden"
                 } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
               >
                 <li>
                   <Link
+                    onClick={handleMobileMenuClose}
                     to="/administrador/"
                     className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
                   >
@@ -122,6 +121,7 @@ const HeaderAdministrador = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={handleMobileMenuClose}
                     to="registrardocente"
                     className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
                   >
@@ -131,6 +131,7 @@ const HeaderAdministrador = () => {
 
                 <li>
                   <Link
+                    onClick={handleMobileMenuClose}
                     to="listadocentes"
                     className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
                   >
@@ -163,12 +164,18 @@ const HeaderAdministrador = () => {
                         className="py-1 text-sm dark:text-gray-400"
                         aria-labelledby="dropdownLargeButton"
                       >
-                        <Link to="reportedocente">
+                        <Link
+                          to="reportedocente"
+                          onClick={handleMobileMenuClose}
+                        >
                           <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
                             <button type="button">Reporte por docente</button>
                           </li>
                         </Link>
-                        <Link to="reportegeneral">
+                        <Link
+                          to="reportegeneral"
+                          onClick={handleMobileMenuClose}
+                        >
                           <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
                             <button type="button">Reporte general</button>
                           </li>
