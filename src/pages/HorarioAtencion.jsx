@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import conexionAxios from "../axios/Axios";
 
 const HorarioAtencion = () => {
+  const [horario, setHorario] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await conexionAxios.get(
+          "/horario/getAllHorariosAndTeachers"
+        );
+        setHorario(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div>
       <div className=" px-10 py-5 ">
@@ -21,27 +38,23 @@ const HorarioAtencion = () => {
       <table className="table-auto border border-black mx-auto">
         <thead>
           <tr>
-            <th className="border border-black  px-4 py-2">Nombre del Docente</th>
+            <th className="border border-black  px-4 py-2">
+              Nombre del Docente
+            </th>
             <th className="border  border-black px-4 py-2">Horario</th>
-            <th className="border  border-black px-4 py-2">Lugar (Virtual)</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="border border-black px-4 py-2">Juan Pérez</td>
-            <td className="border border-black px-4 py-2">Lunes a Viernes 9:00 a 11:00</td>
-            <td className="border  border-black px-4 py-2">Zoom</td>
-          </tr>
-          <tr>
-            <td className="border border-black px-4 py-2">María García</td>
-            <td className="border border-black px-4 py-2">Martes y Jueves 14:00 a 16:00</td>
-            <td className="border border-black px-4 py-2">Google Meet</td>
-          </tr>
-          <tr>
-            <td className="border border-black  px-4 py-2">Pedro González</td>
-            <td className="border border-black px-4 py-2">Lunes y Miércoles 18:00 a 20:00</td>
-            <td className="border border-black px-4 py-2">Microsoft Teams</td>
-          </tr>
+          {horario.map((horarioItem) => (
+            <tr>
+              <td className="border border-black px-4 py-2">
+                {horarioItem.docente}
+              </td>
+              <td className="border border-black px-4 py-2">
+                {/* {horarioItem.horario} */}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

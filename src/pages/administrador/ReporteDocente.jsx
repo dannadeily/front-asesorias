@@ -9,16 +9,15 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-
 const ReportesPDF = ({ data }) => {
   const styles = StyleSheet.create({
     page: {
       fontFamily: "Helvetica",
-      fontSize: 10,
+      fontSize: 12,
       paddingTop: 30,
       paddingLeft: 60,
       paddingRight: 60,
-      lineHeight: 1.5,
+      paddingBottom: 30,
     },
     section: {
       marginBottom: 10,
@@ -26,19 +25,26 @@ const ReportesPDF = ({ data }) => {
     table: {
       display: "table",
       width: "auto",
-      marginBottom: 10,
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderRightWidth: 0,
+      borderBottomWidth: 0,
     },
     tableRow: {
+      margin: "auto",
       flexDirection: "row",
     },
-    tableCellHeader: {
-      backgroundColor: "#ECECEC",
-      color: "#000",
-      padding: 5,
-      fontWeight: "bold",
+    tableCol: {
+      width: "20%",
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderLeftWidth: 0,
+      borderTopWidth: 0,
     },
     tableCell: {
-      padding: 5,
+      margin: "auto",
+      marginTop: 5,
+      fontSize: 10,
     },
   });
 
@@ -46,41 +52,41 @@ const ReportesPDF = ({ data }) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-          <Text>Reporte de Consultas</Text>
+          <Text>Reporte de asesorias realizada por el docente: </Text>
           <View style={styles.table}>
             <View style={styles.tableRow}>
-              <View style={styles.tableCellHeader}>
-                <Text>Docente</Text>
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>Docente</Text>
               </View>
-              <View style={styles.tableCellHeader}>
-                <Text>Materia</Text>
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>Materia</Text>
               </View>
-              <View style={styles.tableCellHeader}>
-                <Text>Asunto</Text>
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>Asunto</Text>
               </View>
-              <View style={styles.tableCellHeader}>
-                <Text>Estudiante</Text>
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>Estudiante</Text>
               </View>
-              <View style={styles.tableCellHeader}>
-                <Text>Fecha y hora</Text>
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>Fecha y hora</Text>
               </View>
             </View>
             {data.map((item) => (
-              <View style={styles.tableRow} key={item.id}>
-                <View style={styles.tableCell}>
-                  <Text>{item.description}</Text>
+              <View style={styles.tableRow}>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.docente}</Text>
                 </View>
-                <View style={styles.tableCell}>
-                  <Text>{item.description}</Text>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.materia} </Text>
                 </View>
-                <View style={styles.tableCell}>
-                  <Text>{item.description}</Text>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.description}</Text>
                 </View>
-                <View style={styles.tableCell}>
-                  <Text>{item.description}</Text>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.estudiante}</Text>
                 </View>
-                <View style={styles.tableCell}>
-                  <Text>{item.description}</Text>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.date}</Text>
                 </View>
               </View>
             ))}
@@ -101,12 +107,9 @@ const ReporteDocente = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   
-
     try {
       const res = await conexionAxios.post(
-        "/consultation/getAllByTeacherIdAndDateBetween/" +
-          teacherId,
+        "/consultation/getAllByTeacherIdAndDateBetween/" + teacherId,
         {
           startDate,
           endDate,
@@ -138,11 +141,8 @@ const ReporteDocente = () => {
     fetchData();
   }, []);
 
- 
   const handleChange = async (teacherId) => {
     setTeacherId(teacherId);
-
-    
   };
 
   return (
