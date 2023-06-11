@@ -4,24 +4,20 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 const HeaderEstudiante = () => {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
-  const handleClick = () => {
-    setOpenMenu(!openMenu);
+  
+
+  // Add mobile menu state
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Toggle mobile menu
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleClickOutside = useCallback(
-    (event) => {
-      if (openMenu && !event.target.closest("#dropdownNavbar")) {
-        setOpenMenu(true);
-      }
-    },
-    [openMenu]
-  );
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [handleClickOutside]);
+  // Close mobile menu when a navigation link is clicked
+  const handleMobileMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Eliminar el token del almacenamiento local
@@ -57,7 +53,7 @@ const HeaderEstudiante = () => {
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
             <button
               className="text-gray-900 dark:text-white md:hidden"
-              onClick={handleClick}
+              onClick={handleMobileMenuToggle}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,11 +73,11 @@ const HeaderEstudiante = () => {
             <div className="flex items-center justify-between">
               <ul
                 className={`${
-                  openMenu ? "block" : "hidden"
+                  openMenu || isMobileMenuOpen ? "block" : "hidden"
                 }  md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
               >
                 <li>
-                  <Link to="/estudiante">
+                  <Link to="/estudiante" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -92,7 +88,7 @@ const HeaderEstudiante = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="DatosEstudiante">
+                  <Link to="DatosEstudiante" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -104,7 +100,7 @@ const HeaderEstudiante = () => {
                 </li>
 
                 <li>
-                  <Link to="AgendarAsesoria">
+                  <Link to="AgendarAsesoria" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -116,7 +112,7 @@ const HeaderEstudiante = () => {
                 </li>
 
                 <li>
-                  <Link to="CancelarAsesoria">
+                  <Link to="CancelarAsesoria" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -127,7 +123,7 @@ const HeaderEstudiante = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="CalificarAsesoria">
+                  <Link to="CalificarAsesoria" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -138,7 +134,7 @@ const HeaderEstudiante = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="reporteAsesoria">
+                  <Link to="reporteAsesoria" onClick={handleMobileMenuClose} >
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"

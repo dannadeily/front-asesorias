@@ -39,30 +39,30 @@ const HorarioAtencion = () => {
         <div className="flex flex-col">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200 ">
-                <thead className="bg-gray-100">
-                  <tr>
+              <table className="min-w-full divide-y divide-gray-400 ">
+                <thead className="text-xs  uppercase bg-blue-400">
+                  <tr >
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-medium  uppercase tracking-wider"
+                      className="px-6 py-3"
                     >
                       Nombre del Docente
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider"
+                      className="px-6 py-3"
                     >
                       Horario
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-400">
                   {horario.map((horarioItem) => (
-                    <tr key={horarioItem.name}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <tr key={horarioItem.name} >
+                      <td className="px-6 py-3">
                         {horarioItem.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-3">
                         {horarioItem.horarios.map((horarios) => (
                           <div key={horarios.id}>
                             <p className="text-sm text-gray-900">

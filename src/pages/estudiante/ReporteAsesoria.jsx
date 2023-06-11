@@ -10,11 +10,7 @@ const ReporteAsesoria = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      startDate.trim() === "" ||
-      endDate.trim() === "" 
-     
-    ) {
+    if (startDate.trim() === "" || endDate.trim() === "") {
       setAlertaError({
         error: true,
         message: "Todos los campos son obligatorios",
@@ -29,7 +25,6 @@ const ReporteAsesoria = () => {
         {
           startDate,
           endDate,
-          
         }
       );
 
@@ -92,8 +87,7 @@ const ReporteAsesoria = () => {
         </div>
 
         <div className="w-52  mx-auto my-5">
-          <div>  
-
+          <div>
             <input
               type="submit"
               value="Consultar"
@@ -106,62 +100,39 @@ const ReporteAsesoria = () => {
       {dataReporte && dataReporte.length ? (
         <div className="md:w-1/2 lg:w-3/5 md:h-screen mx-auto my-5">
           <div className="flex flex-col">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                <div className="overflow-hidden">
-                  <table className="min-w-full border text-center text-sm font-light dark:border-neutral-500">
-                    <thead className="border-b font-medium dark:border-neutral-500">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="border-r px-6 py-4 dark:border-neutral-500"
-                        >
-                          Materia
-                        </th>
-                        <th
-                          scope="col"
-                          className="border-r px-6 py-4 dark:border-neutral-500"
-                        >
-                          Docente
-                        </th>
+            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-400 ">
+                  <thead className="text-xs  uppercase bg-blue-400">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        Materia
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Docente
+                      </th>
 
-                        <th
-                          scope="col"
-                          className="border-r px-6 py-4 dark:border-neutral-500"
-                        >
-                          Tema
-                        </th>
-                        <th
-                          scope="col"
-                          className="border-r px-6 py-4 dark:border-neutral-500"
-                        >
-                          Fecha
-                        </th>
+                      <th scope="col" className="px-6 py-3">
+                        Tema
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Fecha
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-400">
+                    {dataReporte.map((consultarItem) => (
+                      <tr key={consultarItem.id}>
+                        <td className="px-6 py-3">{consultarItem.materia}</td>
+                        <td className="px-6 py-3">{consultarItem.docente}</td>
+                        <td className="px-6 py-3">
+                          {consultarItem.description}
+                        </td>
+                        <td className="px-6 py-3">{consultarItem.date}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {dataReporte.map((consultarItem) => (
-                        <tr
-                          key={consultarItem.id}
-                          className="border-b dark:border-neutral-500"
-                        >
-                          <td className="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
-                            {consultarItem.materia}
-                          </td>
-                          <td className="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
-                            {consultarItem.docente}
-                          </td>
-                          <td className="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
-                            {consultarItem.description}
-                          </td>
-                          <td className="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
-                            {consultarItem.date}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -176,7 +147,8 @@ const ReporteAsesoria = () => {
             </div>
           </div>
           <p className="text-xl mt-5 mb-10 text-center">
-            Seleccione una fecha de inicio y una fecha de fin  para consultar las asesorías
+            Seleccione una fecha de inicio y una fecha de fin para consultar las
+            asesorías
           </p>
         </div>
       )}
