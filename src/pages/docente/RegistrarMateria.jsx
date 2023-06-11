@@ -88,6 +88,8 @@ const RegistrarMateria = () => {
           </div>
         </div>
       </form>
+
+      
     </div>
   );
 };

@@ -103,8 +103,8 @@ function App() {
             path="/docente"
             element={<RutaPrivadaDocente isAuthenticated={isAuthenticated} />}
           >
-            <Route index element={<HistorialAsesoria />} />
-            <Route path="datosdocente" element={<DatosDocente />} />
+           
+            <Route index element={<DatosDocente />} />
             <Route
               path="datosdocente/editardatosdocente"
               element={<EditarDatosDocente />}
@@ -115,6 +115,7 @@ function App() {
             <Route path="materia" element={<Materia />} />
             <Route path="solicitudasesoria" element={<SolicitudAsesoria />} />
             <Route path="editarsolicitud" element={<EditarSolicitud />} />
+            <Route path="historialdocente" element={<HistorialAsesoria />} />
 
             <Route path="cambiarpassword" element={<CambiarPassword />} />
           </Route>

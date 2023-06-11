@@ -23,7 +23,7 @@ const AsesoriaRegistrada = () => {
 
   const eliminarAsesoria = async (id) => {
     try {
-      await conexionAxios.delete(`horario/delete/${id}`);
+      await conexionAxios.put(`horario/delete/${id}`);
       window.location.reload(); // Recargar la página actual
       // Realizar alguna acción adicional después de eliminar la asesoría, como actualizar la lista de asesorías
     } catch (error) {

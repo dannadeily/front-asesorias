@@ -46,9 +46,6 @@ const AgendarAsesoria = () => {
           10000
         );
         // Reiniciar los valores de los campos
-        setCourseId("");
-        setTeacherId("");
-        setHorarioId("");
         setDescripcion("");
         setEmails("");
       }

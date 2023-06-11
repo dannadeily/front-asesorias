@@ -83,7 +83,7 @@ const CalificarAsesoria = () => {
                 <p className="font-bold mb-3 text-gray-700 uppercase">
                   Horario:{" "}
                   <span className="font-normal normal-case">
-                    {calificarItem.date}
+                    {calificarItem.date} de {calificarItem.startTime} a {calificarItem.endTime}
                   </span>
                 </p>
                 <p className="font-normal normal-case py-1">

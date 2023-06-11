@@ -19,6 +19,16 @@ const CancelarAsesoria = () => {
     fetchData();
   }, []);
 
+  const cancelarAsesoria = async (id) => {
+    try {
+      await conexionAxios.put(`/consultation/cancel/${id}`);
+      window.location.reload(); // Recargar la página actual
+      // Realizar alguna acción adicional después de eliminar la asesoría, como actualizar la lista de asesorías
+    } catch (error) {
+      console.error("Error al eliminar la asesoria", error);
+    }
+  };
+
   return (
     <div>
       <div className=" px-10 py-5 ">
@@ -54,13 +64,21 @@ const CancelarAsesoria = () => {
                 </thead>
                 <tbody>
                   {asesoria.map((asesoriaItem) => (
-                    <tr class=" border-b border-gray-400 bg-white ">
-                      <td class="px-6 py-4">Silver</td>
-                      <td class="px-6 py-4">Laptop</td>
-                      <td class="px-6 py-4">$2999</td>
+                    <tr
+                      class=" border-b border-gray-400 bg-white "
+                      key={asesoriaItem.id}
+                    >
+                      <td class="px-6 py-4">{asesoriaItem.docente}</td>
+                      <td class="px-6 py-4">{asesoriaItem.description}</td>
+                      <td class="px-6 py-4">{asesoriaItem.materia}</td>
+                      <td class="px-6 py-4">
+                        {asesoriaItem.date} de {asesoriaItem.startTime} a{" "}
+                        {asesoriaItem.endTime}
+                      </td>
                       <td class="px-6 py-4">
                         <button
                           type="button"
+                          onClick={() => cancelarAsesoria(asesoriaItem.id)}
                           className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg "
                         >
                           Cancelar

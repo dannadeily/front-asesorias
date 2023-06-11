@@ -21,7 +21,7 @@ const ListaMateria = () => {
 
   const eliminarMateria = async (id) => {
     try {
-      await conexionAxios.delete(`/course/delete/${id}`);
+      await conexionAxios.put(`/course/delete/${id}`);
       window.location.reload(); // Recargar la página actual
       // Realizar alguna acción adicional después de eliminar la asesoría, como actualizar la lista de asesorías
     } catch (error) {
@@ -78,6 +78,16 @@ const ListaMateria = () => {
           </div>
         </>
       )}
+
+      <div className="w-60  mx-auto my-5">
+        <div>
+          <input
+            type="button"
+            value="Materias deshabilitadas"
+            className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
+          />
+        </div>
+      </div>
     </div>
   );
 };

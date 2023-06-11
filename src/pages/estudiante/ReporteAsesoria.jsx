@@ -4,7 +4,6 @@ import conexionAxios from "../../axios/Axios";
 const ReporteAsesoria = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [courseId, setCourseId] = useState("");
   const [materias, setMaterias] = useState([]);
   const [dataReporte, setDataReporte] = useState([]);
 
@@ -13,8 +12,8 @@ const ReporteAsesoria = () => {
 
     if (
       startDate.trim() === "" ||
-      endDate.trim() === "" ||
-      courseId.trim() === ""
+      endDate.trim() === "" 
+     
     ) {
       setAlertaError({
         error: true,
@@ -30,7 +29,7 @@ const ReporteAsesoria = () => {
         {
           startDate,
           endDate,
-          courseId,
+          
         }
       );
 
@@ -92,41 +91,8 @@ const ReporteAsesoria = () => {
           </div>
         </div>
 
-        <div className="md:w-1/2 lg:w-3/5 mx-auto my-5">
-          <div>
-            <label
-              className="uppercase text-gray-600 block  font-bold"
-              htmlFor="docente"
-              name="docente"
-              type="text"
-            >
-              Materia
-            </label>
-
-            <div className="relative pb-4">
-              <select
-                className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                onChange={(e) => setCourseId(e.target.value)}
-                value={courseId}
-                name="materia"
-                label="materia"
-              >
-                {materias.map((materia) => (
-                  <option key={materia.id} value={materia.id}>
-                    {materia.name}
-                  </option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg
-                  className="fill-current h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
-                </svg>
-              </div>
-            </div>
+        <div className="w-52  mx-auto my-5">
+          <div>  
 
             <input
               type="submit"
@@ -204,13 +170,13 @@ const ReporteAsesoria = () => {
         <div className="mb-4">
           <div className="px-10 py-5">
             <div className="mb-4">
-              <h1 className="text-3xl font-bold border-b-4 border-red-500">
+              <h1 className="text-3xl font-bold  text-center">
                 No hay reportes de asesorías
               </h1>
             </div>
           </div>
           <p className="text-xl mt-5 mb-10 text-center">
-            Seleccione una materia para consultar las asesorías
+            Seleccione una fecha de inicio y una fecha de fin  para consultar las asesorías
           </p>
         </div>
       )}

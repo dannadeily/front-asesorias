@@ -108,7 +108,7 @@ const HeaderDocente = () => {
                 } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
               >
                 <li>
-                  <Link to="datosdocente">
+                  <Link to="/docente">
                     <button
                       type="button"
                       className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
@@ -185,7 +185,7 @@ const HeaderDocente = () => {
                   )}
                 </li>
                 <li>
-                  <Link to="/docente">
+                  <Link to="historialdocente">
                     <button
                       data-dropdown-toggle="dropdownNavbar"
                       className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
