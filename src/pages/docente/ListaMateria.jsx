@@ -42,23 +42,37 @@ const ListaMateria = () => {
           {materia.map((materiaItem) => (
             <div
               key={materiaItem.id}
-              className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl"
+              className="mx-5 my-10 bg-white shadow-md px-5 py-5 rounded-xl"
             >
-              <p className="font-bold mb-3 text-gray-700 uppercase">
-                Materia:{" "}
-                <span className="font-normal normal-case">
-                  {materiaItem.name}
-                </span>
-              </p>
+              <div className="flex justify-between items-center">
+                <p className="font-bold mb-3 text-gray-700 uppercase">
+                  Materia:{" "}
+                  <span className="font-normal normal-case">
+                    {materiaItem.name}
+                  </span>
+                </p>
 
-              <div className="flex justify-between ">
-                <button
-                  type="button"
-                  className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
-                  onClick={() => eliminarMateria(materiaItem.id)}
-                >
-                  Eliminar
-                </button>
+                <abbr title="Deshabilitar">
+                  <button
+                    type="button"
+                    className="py-2 px-1 text-white font-bold uppercase rounded-lg"
+                    onClick={() => eliminarMateria(materiaItem.id)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-6 h-6 text-red-600"
+                    >
+                      <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z" />
+                      <path
+                        fillRule="evenodd"
+                        d="M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zm6.133 2.845a.75.75 0 011.06 0l1.72 1.72 1.72-1.72a.75.75 0 111.06 1.06l-1.72 1.72 1.72 1.72a.75.75 0 11-1.06 1.06L12 15.685l-1.72 1.72a.75.75 0 11-1.06-1.06l1.72-1.72-1.72-1.72a.75.75 0 010-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </abbr>
               </div>
             </div>
           ))}
@@ -78,16 +92,6 @@ const ListaMateria = () => {
           </div>
         </>
       )}
-
-      <div className="w-60  mx-auto my-5">
-        <div>
-          <input
-            type="button"
-            value="Materias deshabilitadas"
-            className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
-          />
-        </div>
-      </div>
     </div>
   );
 };

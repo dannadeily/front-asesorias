@@ -66,7 +66,7 @@ const AsesoriaRegistrada = () => {
                 </span>
               </p>
 
-              <div className="flex justify-between mt-10">
+              <div className="flex justify-between ">
                 <button
                   type="button"
                   className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"

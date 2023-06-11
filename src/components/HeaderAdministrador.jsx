@@ -30,9 +30,6 @@ const HeaderAdministrador = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-  const handleClick = () => {
-    setOpenMenu(!openMenu);
-  };
 
   // Add mobile menu state
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import conexionAxios from "../../axios/Axios";
 import AlertaError from "../../components/AlertaError";
 import AlertaExitoso from "../../components/AlertaExitoso";
+import HabilitarMateria from "./HabilitarMateria";
 
 const RegistrarMateria = () => {
   const [name, setName] = useState("");
@@ -41,6 +42,7 @@ const RegistrarMateria = () => {
       setTimeout(() => setAlertaError({ error: false, message: "" }), 10000);
     }
   };
+
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5 ">
       <div className="mb-4">
@@ -88,8 +90,8 @@ const RegistrarMateria = () => {
           </div>
         </div>
       </form>
-
       
+      <HabilitarMateria />
     </div>
   );
 };

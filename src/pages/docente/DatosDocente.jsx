@@ -75,11 +75,11 @@ const DatosDocente = () => {
           </label>
         </div>
 
-        <Link to="EditarDatosDocente">
+        {/* <Link to="EditarDatosDocente">
           <button className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors">
             Editar datos
           </button>
-        </Link>
+        </Link> */}
       </div>
     </>
   );

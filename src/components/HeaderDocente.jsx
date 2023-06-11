@@ -28,6 +28,20 @@ const HeaderDocente = () => {
   }, [handleClickOutside2]);
 
   const [openMenu, setOpenMenu] = useState(false);
+
+  // Add mobile menu state
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Toggle mobile menu
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Close mobile menu when a navigation link is clicked
+  const handleMobileMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
+
   const handleClick = () => {
     setOpenMenu(!openMenu);
   };
@@ -84,7 +98,7 @@ const HeaderDocente = () => {
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
             <button
               className="text-gray-900 dark:text-white md:hidden"
-              onClick={handleClick}
+              onClick={handleMobileMenuToggle}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,11 +118,11 @@ const HeaderDocente = () => {
             <div className="flex items-center justify-between">
               <ul
                 className={`${
-                  openMenu ? "block" : "hidden"
+                  openMenu || isMobileMenuOpen ? "block" : "hidden"
                 } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
               >
                 <li>
-                  <Link to="/docente">
+                  <Link to="/docente" onClick={handleMobileMenuClose}>
                     <button
                       type="button"
                       className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
@@ -118,7 +132,7 @@ const HeaderDocente = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="horarioasesoria">
+                  <Link to="horarioasesoria" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -129,7 +143,7 @@ const HeaderDocente = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="materia">
+                  <Link to="materia" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
@@ -166,14 +180,20 @@ const HeaderDocente = () => {
                         className="py-1 text-sm dark:text-gray-400"
                         aria-labelledby="dropdownLargeButton"
                       >
-                        <Link to="solicitudasesoria">
+                        <Link
+                          to="solicitudasesoria"
+                          onClick={handleMobileMenuClose}
+                        >
                           <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
                             <button type="button">
                               solicitudes para aprobar
                             </button>
                           </li>
                         </Link>
-                        <Link to="editarsolicitud">
+                        <Link
+                          to="editarsolicitud"
+                          onClick={handleMobileMenuClose}
+                        >
                           <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
                             <button type="button">
                               cancelar solicitudes aprobadas
@@ -185,7 +205,7 @@ const HeaderDocente = () => {
                   )}
                 </li>
                 <li>
-                  <Link to="historialdocente">
+                  <Link to="historialdocente" onClick={handleMobileMenuClose}>
                     <button
                       data-dropdown-toggle="dropdownNavbar"
                       className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
