@@ -38,7 +38,7 @@ const HabilitarMateria = () => {
   const habilitarMateria = async (id) => {
     try {
       await conexionAxios.put(`/course/enable/${id}`);
-    //   window.location.reload(); // Recargar la página actual
+      window.location.reload(); // Recargar la página actual
       // Realizar alguna acción adicional después de habilitar la materia
     } catch (error) {
       console.error("Error al habilitar la materia", error);
@@ -103,11 +103,12 @@ const HabilitarMateria = () => {
               )
               .map((materia) => (
                 <li
+                onClick={() => selectMateria(materia)}
                   key={materia.id}
                   className="p-3 hover:bg-gray-100 cursor-pointer"
                 >
                   <span
-                    onClick={() => selectMateria(materia)}
+                    
                     className={
                       selectedMateria && selectedMateria.id === materia.id
                         ? "font-medium text-blue-600"

@@ -311,7 +311,14 @@ const ReporteDocente = () => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="mb-4">
+          <div className="px-10 py-5"></div>
+          <p className="text-xl mt-5 mb-10 text-center">
+            No hay asesorias
+          </p>
+        </div>
+      )}
     </div>
   );
 };
