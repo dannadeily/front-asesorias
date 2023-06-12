@@ -73,9 +73,10 @@ function App() {
             <Route path="registrardocente" element={<RegistrarDocente />} />
             <Route path="listadocentes" element={<ListaDocentes />} />
             <Route
-              path="listadocentes/editardatosasesoria"
+              path="/administrador/listadocentes/editarhorarioasesoria/:id"
               element={<EditarHorarioAsesoria />}
             />
+
             <Route path="reportedocente" element={<ReporteDocente />} />
             <Route path="reportegeneral" element={<ReporteGeneral />} />
           </Route>
@@ -103,7 +104,6 @@ function App() {
             path="/docente"
             element={<RutaPrivadaDocente isAuthenticated={isAuthenticated} />}
           >
-           
             <Route index element={<DatosDocente />} />
             <Route
               path="datosdocente/editardatosdocente"

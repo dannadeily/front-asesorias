@@ -53,6 +53,7 @@ const ReportesPDF = ({ data }) => {
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text>Reporte de asesorias realizada por el docente: </Text>
+          <Text>{""} </Text>
           <View style={styles.table}>
             <View style={styles.tableRow}>
               <View style={styles.tableCol}>
@@ -314,9 +315,7 @@ const ReporteDocente = () => {
       ) : (
         <div className="mb-4">
           <div className="px-10 py-5"></div>
-          <p className="text-xl mt-5 mb-10 text-center">
-            No hay asesorias
-          </p>
+          <p className="text-xl mt-5 mb-10 text-center">No hay asesorias</p>
         </div>
       )}
     </div>
