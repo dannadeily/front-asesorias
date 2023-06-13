@@ -6,7 +6,7 @@ import AlertaError from "../../components/AlertaError";
 import AlertaExitoso from "../../components/AlertaExitoso";
 import { useNavigate, redirect } from "react-router-dom";
 
-const RegistrarAsesoriaDocente = () => {
+const RegistrarAsesoriaDocente = ({ docenteId }) => {
   const navigate = useNavigate();
   const [day, setDay] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -40,7 +40,7 @@ const RegistrarAsesoriaDocente = () => {
         day,
         startTime,
         endTime,
-        userId: localStorage.getItem("userId"),
+        userId: docenteId,
       });
 
       if (res.status === 201) {

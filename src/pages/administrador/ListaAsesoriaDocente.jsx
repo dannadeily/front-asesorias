@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import conexionAxios from "../../axios/Axios";
-import { useNavigate } from "react-router-dom";
 
-const ListaAsesoriaDocente = () => {
+const ListaAsesoriaDocente = ({ docenteId }) => {
+  
   const [asesoria, setAsesoria] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await conexionAxios.get(
-          "horario/user/" + localStorage.getItem("userId")
-        );
+        const response = await conexionAxios.get(`horario/user/${docenteId}`);
+        console.log(response.data); // Verificar la respuesta de la API
         setAsesoria(response.data);
       } catch (error) {
         console.error(error);
@@ -19,7 +17,7 @@ const ListaAsesoriaDocente = () => {
     };
 
     fetchData();
-  }, []);
+  }, [docenteId]);
 
   const eliminarAsesoria = async (id) => {
     try {
@@ -37,7 +35,7 @@ const ListaAsesoriaDocente = () => {
         <>
           <div className="mb-4">
             <h1 className="text-2xl font-bold border-b-4 border-red-500">
-            Docente: ""
+              Asesorías registradas
             </h1>
           </div>
 
@@ -47,19 +45,19 @@ const ListaAsesoriaDocente = () => {
               className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl"
             >
               <p className="font-bold mb-3 text-gray-700 uppercase">
-                dia:{" "}
+                Día:{" "}
                 <span className="font-normal normal-case">
                   {asesoriaItem.day}
                 </span>
               </p>
               <p className="font-bold mb-3 text-gray-700 uppercase">
-                hora Inicio:{" "}
+                Hora de inicio:{" "}
                 <span className="font-normal normal-case">
                   {asesoriaItem.startTime}
                 </span>
               </p>
               <p className="font-bold mb-3 text-gray-700 uppercase">
-                Hora fin:{" "}
+                Hora de fin:{" "}
                 <span className="font-normal normal-case">
                   {asesoriaItem.endTime}
                 </span>
@@ -81,10 +79,10 @@ const ListaAsesoriaDocente = () => {
         <>
           <div className="mb-4">
             <h1 className="text-2xl font-bold border-b-4 border-red-500">
-              Docente: ""
+              Asesorías registradas
             </h1>
             <p className="text-xl mt-5 mb-10 text-center">
-              Comienza agregando una asesoria{" "}
+              Comienza agregando una asesoría{" "}
               <span className="text-indigo-600 font-bold text-xl">
                 y aparecerán en este lugar
               </span>
