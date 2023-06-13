@@ -75,10 +75,12 @@ function App() {
             <Route
               path="/administrador/listadocentes/editarhorarioasesoria/:id"
               element={<EditarHorarioAsesoria />}
+              
             />
 
             <Route path="reportedocente" element={<ReporteDocente />} />
             <Route path="reportegeneral" element={<ReporteGeneral />} />
+            <Route path="/administrador/cambiarpassword" element={<CambiarPassword/>}/>
           </Route>
 
           <Route
@@ -97,7 +99,7 @@ function App() {
             <Route path="CancelarAsesoria" element={<CancelarAsesoria />} />
             <Route path="CalificarAsesoria" element={<CalificarAsesoria />} />
             <Route path="reporteasesoria" element={<ReporteAsesoria />} />
-            <Route path="cambiarpassword" element={<CambiarPassword />} />
+            <Route path="/Estudiante/DatosEstudiante/cambiarpassword" element={<CambiarPassword/>}/>
           </Route>
 
           <Route
@@ -117,7 +119,7 @@ function App() {
             <Route path="editarsolicitud" element={<EditarSolicitud />} />
             <Route path="historialdocente" element={<HistorialAsesoria />} />
 
-            <Route path="cambiarpassword" element={<CambiarPassword />} />
+            <Route path="/docente/cambiarpassword" element={<CambiarPassword/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -90,6 +90,12 @@ const DatosEstudiante = () => {
           </div>
         </>
 
+        <Link
+          to="/Estudiante/DatosEstudiante/cambiarpassword"
+          className=" mb-5 w-full py-2  text-blue-600 text-center hover:cursor-pointer hover:text-blue-900 transition-colors"
+        >
+          Cambiar contraseña
+        </Link>
         {/* <Link to="EditarDatosEstudiante">
           <button className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors">
             Editar datos

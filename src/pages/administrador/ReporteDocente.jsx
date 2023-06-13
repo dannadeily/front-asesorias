@@ -11,6 +11,23 @@ import {
 
 const ReportesPDF = ({ data }) => {
   const styles = StyleSheet.create({
+    header: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginBottom: 20,
+    },
+    logo: {
+      width: 50,
+      height: 50,
+    },
+    reportName: {
+      fontSize: 18,
+      fontWeight: "bold",
+    },
+    date: {
+      fontSize: 12,
+    },
     page: {
       fontFamily: "Helvetica",
       fontSize: 12,
@@ -52,8 +69,15 @@ const ReportesPDF = ({ data }) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-          <Text>Reporte de asesorias realizada por el docente: </Text>
-          <Text>{""} </Text>
+          <View style={styles.header}>
+            <Text style={styles.reportName}>Reporte de Asesorías</Text>
+            <Text style={styles.date}>
+              {new Date().toLocaleString("es-ES", {
+                timeZone: "UTC",
+                hour12: false,
+              })}
+            </Text>
+          </View>
           <View style={styles.table}>
             <View style={styles.tableRow}>
               <View style={styles.tableCol}>

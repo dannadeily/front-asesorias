@@ -30,7 +30,6 @@ const HeaderAdministrador = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-
   // Add mobile menu state
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -59,6 +58,7 @@ const HeaderAdministrador = () => {
             <h1 className="px-2 text-white font-bold text-1xl">
               ADMINISTRADOR
             </h1>
+
             <button
               className="flex items-center px-4 py-2 rounded ml-auto"
               onClick={handleLogout}
@@ -180,6 +180,16 @@ const HeaderAdministrador = () => {
                       </ul>
                     </div>
                   )}
+                </li>
+
+                <li>
+                  <Link
+                    onClick={handleMobileMenuClose}
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                    to="cambiarpassword"
+                  >
+                    Cambiar contraseña
+                  </Link>
                 </li>
               </ul>
             </div>

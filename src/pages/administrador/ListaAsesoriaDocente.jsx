@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import conexionAxios from "../../axios/Axios";
 import { useNavigate } from "react-router-dom";
 
-const AsesoriaRegistrada = () => {
+const ListaAsesoriaDocente = () => {
   const [asesoria, setAsesoria] = useState([]);
   const navigate = useNavigate();
 
@@ -32,13 +32,12 @@ const AsesoriaRegistrada = () => {
   };
 
   return (
-    
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll mx-5">
       {asesoria && asesoria.length ? (
         <>
           <div className="mb-4">
             <h1 className="text-2xl font-bold border-b-4 border-red-500">
-               Horario de asesoria
+            Docente: ""
             </h1>
           </div>
 
@@ -82,7 +81,7 @@ const AsesoriaRegistrada = () => {
         <>
           <div className="mb-4">
             <h1 className="text-2xl font-bold border-b-4 border-red-500">
-              No hay horario de asesoria registrada
+              Docente: ""
             </h1>
             <p className="text-xl mt-5 mb-10 text-center">
               Comienza agregando una asesoria{" "}
@@ -94,8 +93,7 @@ const AsesoriaRegistrada = () => {
         </>
       )}
     </div>
-    
   );
 };
 
-export default AsesoriaRegistrada;
+export default ListaAsesoriaDocente;

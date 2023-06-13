@@ -22,6 +22,14 @@ const ListaDocentes = () => {
               : docenteItem
           )
         );
+
+        setFilteredData((prevState) =>
+          prevState.map((docenteItem) =>
+            docenteItem.id === docenteId
+              ? { ...docenteItem, isEnabled: !status }
+              : docenteItem
+          )
+        );
       }
     } catch (error) {
       // Manejar el error de la solicitud
@@ -69,7 +77,7 @@ const ListaDocentes = () => {
           </h1>
         </div>
       </div>
-      <div className="md:w-1/2 lg:w-3/5 md:h-screen mx-auto ">
+      <div className=" lg:w-3/5 md:h-screen mx-auto ">
         <div className="flex flex-col">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div>
@@ -122,7 +130,7 @@ const ListaDocentes = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-400">
-                  {(searchTerm !== "" ? filteredData : dataTotal).map(
+                  {(searchTerm !== "" ? filteredData : docente).map(
                     (docenteItem) => (
                       <tr key={docenteItem.id}>
                         <td className="px-6 py-3">
@@ -132,16 +140,18 @@ const ListaDocentes = () => {
                         <td className="px-6 py-3">
                           <button
                             className={`ml-2 text-white rounded-lg px-3 py-1 text-sm ${
-                              docenteItem.status ? "bg-green-500" : "bg-red-500"
+                              docenteItem.isEnabled
+                                ? "bg-green-500"
+                                : "bg-red-500"
                             }`}
                             onClick={() =>
                               handleToggleEstado(
                                 docenteItem.id,
-                                docenteItem.status
+                                docenteItem.isEnabled
                               )
                             }
                           >
-                            {docenteItem.status
+                            {docenteItem.isEnabled
                               ? "Habilitado"
                               : "Deshabilitado"}
                           </button>
