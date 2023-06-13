@@ -31,7 +31,7 @@ const HorarioAtencion = () => {
       <div className="flex flex-col items-center justify-center pb-5 ">
         <h2 className="text-xl font-medium text-center mt-4">
           Aqui podra encontrar el horario de asesoria de cada profesor de la
-          carrera ingenieria de sistemas
+          carrera Ingenieria De Sistemas
         </h2>
       </div>
 

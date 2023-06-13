@@ -97,7 +97,7 @@ const HeaderDocente = () => {
           </div>
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
             <button
-              className="text-gray-900 dark:text-white md:hidden"
+              className=" text-white md:hidden"
               onClick={handleMobileMenuToggle}
             >
               <svg
@@ -125,7 +125,7 @@ const HeaderDocente = () => {
                   <Link to="/docente" onClick={handleMobileMenuClose}>
                     <button
                       type="button"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  m md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Datos personales
                     </button>
@@ -136,7 +136,7 @@ const HeaderDocente = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Horario asesoria
                     </button>
@@ -147,7 +147,7 @@ const HeaderDocente = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Materia
                     </button>
@@ -159,7 +159,7 @@ const HeaderDocente = () => {
                     onClick={() => handleClick2("menu2")}
                     id="dropdownNavbarLink"
                     data-dropdown-toggle="dropdownNavbar"
-                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                    className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                   >
                     Solicitud de asesorias
                     <svg
@@ -174,17 +174,17 @@ const HeaderDocente = () => {
                   </button>
 
                   {openMenu2 === "menu2" && (
-                    <div className="absolute z-10 block font-normal bg-white divide-y divide-gray-100 rounded shadow  dark:divide-gray-600">
+                    <div className="absolute z-10 block font-normal bg-white divide-y  rounded shadow  divide-gray-600">
                       <ul
                         id="dropdownNavbar"
-                        className="py-1 text-sm dark:text-gray-400"
+                        className="py-1 text-sm text-gray-400"
                         aria-labelledby="dropdownLargeButton"
                       >
                         <Link
                           to="solicitudasesoria"
                           onClick={handleMobileMenuClose}
                         >
-                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 hover:text-black">
                             <button type="button">
                               solicitudes para aprobar
                             </button>
@@ -194,7 +194,7 @@ const HeaderDocente = () => {
                           to="editarsolicitud"
                           onClick={handleMobileMenuClose}
                         >
-                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 hover:text-black">
                             <button type="button">
                               cancelar solicitudes aprobadas
                             </button>
@@ -208,7 +208,7 @@ const HeaderDocente = () => {
                   <Link to="historialdocente" onClick={handleMobileMenuClose}>
                     <button
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:border-0 md:hover:text-blue-700  text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Historial de asesorias
                     </button>
