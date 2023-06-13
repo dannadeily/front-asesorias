@@ -6,7 +6,7 @@ import conexionAxios from "../axios/Axios";
 const CambiarPassword = () => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [repeatNewPassword, setRepeatNewPassword] = useState("");
   const [alertaError, setAlertaError] = useState({ error: false, message: "" });
   const [alertaExitoso, setAlertaExitoso] = useState({
     error: false,
@@ -19,7 +19,7 @@ const CambiarPassword = () => {
     if (
       password.trim() === "" ||
       newPassword.trim() === "" ||
-      repeatPassword.trim() === ""
+      repeatNewPassword.trim() === ""
     ) {
       setAlertaError({
         error: true,
@@ -28,7 +28,7 @@ const CambiarPassword = () => {
       setTimeout(() => setAlertaError({ error: false, message: "" }), 7000); // Limpiar la alerta después de 7 segundos
       return;
     }
-    if (newPassword !== repeatPassword) {
+    if (newPassword !== repeatNewPassword) {
       setAlertaError({
         error: true,
         message: "Las contraseñas no coinciden",
@@ -42,7 +42,7 @@ const CambiarPassword = () => {
         id: localStorage.getItem("userId"),
         password,
         newPassword,
-        repeatPassword,
+        repeatNewPassword,
       });
 
       if (res.status === 200) {
@@ -51,7 +51,7 @@ const CambiarPassword = () => {
         // Reiniciar los valores de los campos
         setPassword("");
         setNewPassword("");
-        setRepeatPassword("");
+        setRepeatNewPassword("");
       }
     } catch (error) {
       console.log(error);
@@ -134,8 +134,8 @@ const CambiarPassword = () => {
                 type="password"
                 placeholder="Repetir contraseña"
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-                value={repeatPassword}
-                onChange={(e) => setRepeatPassword(e.target.value)}
+                value={repeatNewPassword}
+                onChange={(e) => setRepeatNewPassword(e.target.value)}
               />
             </div>
 
