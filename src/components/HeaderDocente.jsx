@@ -71,7 +71,7 @@ const HeaderDocente = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        <nav className="bg-gray-50  dark:bg-red-700 ">
+        <nav className="bg-red-700 ">
           <div className="flex items-center justify-between">
             <h1 className="px-2 text-white font-bold text-1xl">DOCENTE</h1>
             <button
@@ -119,7 +119,7 @@ const HeaderDocente = () => {
               <ul
                 className={`${
                   openMenu || isMobileMenuOpen ? "block" : "hidden"
-                } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
+                } md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
               >
                 <li>
                   <Link to="/docente" onClick={handleMobileMenuClose}>
