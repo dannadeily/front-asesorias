@@ -53,7 +53,7 @@ const HeaderAdministrador = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        <nav className="bg-gray-50 dark:bg-red-700">
+        <nav className=" bg-red-700">
           <div className="flex items-center justify-between">
             <h1 className="px-2 text-white font-bold text-1xl">
               ADMINISTRADOR
@@ -83,7 +83,7 @@ const HeaderAdministrador = () => {
 
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
             <button
-              className="text-gray-900 dark:text-white md:hidden"
+              className=" text-white md:hidden"
               onClick={handleMobileMenuToggle}
             >
               <svg
@@ -105,13 +105,13 @@ const HeaderAdministrador = () => {
               <ul
                 className={`${
                   openMenu || isMobileMenuOpen ? "block" : "hidden"
-                } md:block md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
+                }  md:flex flex-col md:flex-row md:space-x-8 text-sm font-medium`}
               >
                 <li>
                   <Link
                     onClick={handleMobileMenuClose}
                     to="/administrador/"
-                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-white"
                   >
                     Horario de asesorias
                   </Link>
@@ -120,7 +120,7 @@ const HeaderAdministrador = () => {
                   <Link
                     onClick={handleMobileMenuClose}
                     to="registrardocente"
-                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700  text-white"
                   >
                     Registrar docente
                   </Link>
@@ -130,7 +130,7 @@ const HeaderAdministrador = () => {
                   <Link
                     onClick={handleMobileMenuClose}
                     to="listadocentes"
-                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700  text-white"
                   >
                     Listado de docentes
                   </Link>
@@ -140,7 +140,7 @@ const HeaderAdministrador = () => {
                     onClick={() => handleClick2("menu1")}
                     id="dropdownNavbarLink"
                     data-dropdown-toggle="dropdownNavbar"
-                    className="flex py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                    className="flex py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-white"
                   >
                     Reportes
                     <svg
@@ -155,17 +155,17 @@ const HeaderAdministrador = () => {
                   </button>
 
                   {openMenu2 === "menu1" && (
-                    <div className="absolute z-10 block font-normal bg-white divide-y divide-gray-100 rounded shadow  dark:divide-gray-600">
+                    <div className="absolute z-10 block font-normal bg-white divide-y  rounded shadow  divide-gray-600">
                       <ul
                         id="dropdownNavbar"
-                        className="py-1 text-sm dark:text-gray-400"
+                        className="py-1 text-sm text-gray-400"
                         aria-labelledby="dropdownLargeButton"
                       >
                         <Link
                           to="reportedocente"
                           onClick={handleMobileMenuClose}
                         >
-                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 hover:text-black">
                             <button type="button">Reporte por docente</button>
                           </li>
                         </Link>
@@ -173,7 +173,7 @@ const HeaderAdministrador = () => {
                           to="reportegeneral"
                           onClick={handleMobileMenuClose}
                         >
-                          <li className="block px-4 py-2  text-black hover:bg-red-300 dark:hover:text-black">
+                          <li className="block px-4 py-2  text-black hover:bg-red-300 hover:text-black">
                             <button type="button">Reporte general</button>
                           </li>
                         </Link>
@@ -185,7 +185,7 @@ const HeaderAdministrador = () => {
                 <li>
                   <Link
                     onClick={handleMobileMenuClose}
-                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700 text-gray-900 dark:text-white"
+                    className="block py-2 px-3 rounded-md hover:bg-transparent hover:text-blue-700  text-white"
                     to="cambiarpassword"
                   >
                     Cambiar contraseña

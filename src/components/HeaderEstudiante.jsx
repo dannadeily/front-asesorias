@@ -4,7 +4,6 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 const HeaderEstudiante = () => {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
-  
 
   // Add mobile menu state
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,7 +25,7 @@ const HeaderEstudiante = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        <nav className="bg-gray-50  dark:bg-red-700 ">
+        <nav className="bg-red-700 ">
           <div className="flex items-center justify-between">
             <h1 className="px-2 text-white font-bold text-1xl">ESTUDIANTE</h1>
             <button
@@ -52,7 +51,7 @@ const HeaderEstudiante = () => {
           </div>
           <div className="max-w-screen-xl px-4 py-3 md:px-6">
             <button
-              className="text-gray-900 dark:text-white md:hidden"
+              className=" text-white md:hidden"
               onClick={handleMobileMenuToggle}
             >
               <svg
@@ -81,7 +80,7 @@ const HeaderEstudiante = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Horario de asesoria
                     </button>
@@ -92,7 +91,7 @@ const HeaderEstudiante = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Datos personales
                     </button>
@@ -104,7 +103,7 @@ const HeaderEstudiante = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Agendar asesoria
                     </button>
@@ -116,7 +115,7 @@ const HeaderEstudiante = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Cancelar asesoria
                     </button>
@@ -127,18 +126,18 @@ const HeaderEstudiante = () => {
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Calificar asesoria
                     </button>
                   </Link>
                 </li>
                 <li>
-                  <Link to="reporteAsesoria" onClick={handleMobileMenuClose} >
+                  <Link to="reporteAsesoria" onClick={handleMobileMenuClose}>
                     <button
                       id="dropdownNavbarLink"
                       data-dropdown-toggle="dropdownNavbar"
-                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700  text-gray-900 dark:text-white md:p-0 md:w-auto   md:dark:hover:bg-transparent"
+                      className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium  rounded   md:border-0 md:hover:text-blue-700   text-white md:p-0 md:w-auto   md:hover:bg-transparent"
                     >
                       Reportes
                     </button>

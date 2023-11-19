@@ -6,7 +6,7 @@ const Header = () => {
     <div>
       <header className="fixed top-0 left-0 right-0 z-50">
         <nav
-          className="relative flex w-full items-center justify-between py-1 shadow-lg  dark:bg-red-800  md:flex-wrap md:justify-start"
+          className="relative flex w-full items-center justify-between py-1  bg-red-800  md:flex-wrap md:justify-start"
           data-te-navbar-ref
         >
           <Link to="/">
