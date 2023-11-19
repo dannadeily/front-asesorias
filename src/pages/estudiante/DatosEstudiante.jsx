@@ -96,11 +96,13 @@ const DatosEstudiante = () => {
         >
           Cambiar contraseña
         </Link>
-        {/* <Link to="EditarDatosEstudiante">
-          <button className="bg-red-500 mb-5 w-full py-2 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors">
-            Editar datos
-          </button>
-        </Link> */}
+        <div>
+          <Link to="EditarDatosEstudiante">
+            <button className="py-2 px-10 mt-2 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg">
+              Editar datos
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
