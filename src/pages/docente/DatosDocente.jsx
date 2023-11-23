@@ -67,6 +67,21 @@ const DatosDocente = () => {
             name="email"
             type="email"
           >
+            Identificación
+          </label>
+
+          <label className="block text-gray-600 font-bold">
+            {docente.identification}
+          </label>
+        </div>
+
+        <div className="my-5">
+          <label
+            className="uppercase block  font-bold"
+            htmlFor="email"
+            name="email"
+            type="email"
+          >
             Email
           </label>
 

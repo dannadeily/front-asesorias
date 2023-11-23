@@ -10,6 +10,7 @@ const RegistrarEstudiante = () => {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [identification, setIdentification] = useState("");
   const [alertaError, setAlertaError] = useState({ error: false, message: "" });
   const [alertaExitoso, setAlertaExitoso] = useState({
     error: false,
@@ -24,7 +25,8 @@ const RegistrarEstudiante = () => {
       name.trim() === "" ||
       lastname.trim() === "" ||
       email.trim() === "" ||
-      password.trim() === ""
+      password.trim() === "" ||
+      identification.trim() === ""
     ) {
       setAlertaError({
         error: true,
@@ -49,6 +51,7 @@ const RegistrarEstudiante = () => {
         lastname,
         email,
         password,
+        identification,
       });
 
       if (res.status === 201) {
@@ -63,6 +66,7 @@ const RegistrarEstudiante = () => {
         setLastname("");
         setEmail("");
         setPassword("");
+        setIdentification("");
       }
     } catch (error) {
       // Manejar el error de la solicitud
@@ -147,6 +151,27 @@ const RegistrarEstudiante = () => {
               className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
+            />
+          </div>
+
+          <div className="my-5">
+            <label
+              className="uppercase text-gray-600 block  font-bold"
+              htmlFor="identification"
+              name="identification"
+              type="text"
+            >
+              Identificacion
+            </label>
+
+            <input
+              id="identification"
+              type="text"
+              placeholder="identificacion"
+              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={identification}
+              name="identification"
+              onChange={(e) => setIdentification(e.target.value)}
             />
           </div>
 
