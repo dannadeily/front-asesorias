@@ -57,16 +57,13 @@ const RegistrarEstudiante = () => {
       if (res.status === 201) {
         setAlertaExitoso({ error: true, message: res.data.message });
         setTimeout(
-          () => setAlertaExitoso({ error: false, message: "" }),
+          () => setAlertaExitoso({ error: false, message: res.data.message }),
           10000
         );
         // Reiniciar los valores de los campos
         setCode("");
         setName("");
         setLastname("");
-        setEmail("");
-        setPassword("");
-        setIdentification("");
       }
     } catch (error) {
       // Manejar el error de la solicitud
