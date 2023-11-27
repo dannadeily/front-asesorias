@@ -11,7 +11,7 @@ const Header = () => {
         >
           <Link to="/">
             <img
-              src="/public/logo_ingsistemas_vertical_invertido.png"
+              src="/logo_ingsistemas_vertical_invertido.png"
               width="100"
               height="100"
               alt="logo fablab"
